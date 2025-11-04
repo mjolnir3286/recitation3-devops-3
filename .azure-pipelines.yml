@@ -40,14 +40,13 @@ stages:
           deploy:
             steps:
             - script: |
-                whoami
-                groups
-                docker ps
-                docker info | grep "Server Version"
                 docker pull vedangj044/recitation3fastapi:latest
                 docker stop fastapi-dev || true
                 docker rm fastapi-dev || true
                 docker run -d -p 80:8000 --name fastapi-dev vedangj044/recitation3fastapi:latest
+                docker ps
+                docker ps -a
+                docker logs fastapi-dev
               displayName: "Run FastAPI Container on Dev VM"
 
   - stage: DeployProd
