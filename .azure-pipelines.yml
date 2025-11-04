@@ -15,14 +15,15 @@ stages:
         - script: |
             python -m pip install --upgrade pip
             pip install -r requirements.txt
+            export PYTHONPATH=$PWD
             pytest -v
           displayName: "Run Unit Tests"
 
-          # - task: Docker@2
-          #   inputs:
-          #     command: "buildAndPush"
-          #     repository: "vedangj044/recitation3fastapi:latest"
-          #     dockerfile: "**/Dockerfile"
-          #     tags: |
-          #       latest
-          #     containerRegistry: "dockerhub"
+        - task: Docker@2
+          inputs:
+            command: "buildAndPush"
+            repository: "vedangj044/recitation3fastapi:latest"
+            dockerfile: "**/Dockerfile"
+            tags: |
+              latest
+            containerRegistry: "dockerhub"
