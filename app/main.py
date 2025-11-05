@@ -8,7 +8,7 @@ templates = Jinja2Templates(directory="app/templates")
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
     companies = [
-        {"name": "Nvidia", "valuation": "$4.86T"},  
+        {"name": "Nvidia", "valuation": "$5T"},  
         {"name": "Microsoft", "valuation": "$4.04T"},  
         {"name": "Apple", "valuation": "$3.99T"},  
         {"name": "Alphabet", "valuation": "$2.58T"},  
