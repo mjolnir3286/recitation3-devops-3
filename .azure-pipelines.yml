@@ -22,7 +22,7 @@ stages:
         - task: Docker@2
           inputs:
             command: "buildAndPush"
-            repository: "vedangj044/recitation3fastapi"
+            repository: "mjolnir3286/recitation3fastapi"
             dockerfile: "Dockerfile"
             tags: |
               latest
@@ -43,10 +43,10 @@ stages:
           deploy:
             steps:
             - script: |
-                docker pull vedangj044/recitation3fastapi:latest
+                docker pull mjolnir3286/recitation3fastapi:latest
                 docker stop fastapi-dev || true
                 docker rm fastapi-dev || true
-                docker run -d --restart=always -p 80:8000 --name fastapi-dev vedangj044/recitation3fastapi:latest
+                docker run -d --restart=always -p 80:8000 --name fastapi-dev mjolnir3286/recitation3fastapi:latest
               displayName: "Run FastAPI Container on Dev VM"
 
   - stage: DeployProd
@@ -65,8 +65,8 @@ stages:
           deploy:
             steps:
             - script: |
-                docker pull vedangj044/recitation3fastapi:latest
+                docker pull mjolnir3286/recitation3fastapi:latest
                 docker stop fastapi-prod || true
                 docker rm fastapi-prod || true
-                docker run -d --restart=always -p 80:8000 --name fastapi-prod vedangj044/recitation3fastapi:latest
+                docker run -d --restart=always -p 80:8000 --name fastapi-prod mjolnir3286/recitation3fastapi:latest
               displayName: "Run FastAPI Container on Prod VM"
